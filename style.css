@@ -1,0 +1,40 @@
+.height {
+    height: 500px;
+}
+
+.fz {
+    font-size: 30px;
+}
+
+#sign {
+    position: relative;
+    font-size: 5rem;
+    color: #222;
+}
+
+#sign::before {
+    content: attr(data-text);
+    position: absolute;
+    color: white;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: animate 4s linear 1;
+}
+
+@keyframes animate {
+    0% {
+        width: 0;
+        border-right: 4px solid white;
+    }
+
+    100% {
+        border-right: 4px solid white;
+        width: 100%;
+    }
+
+}
+#info{
+    background-image: url('https://wallpaperaccess.com/full/5651990.jpg');
+    padding:15rem;
+}
