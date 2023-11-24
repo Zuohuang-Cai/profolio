@@ -1,6 +1,55 @@
+let a = [0, 0];
+window.onmousemove = (event) => {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+    if (a[0] + 100 <= mouseX || a[1] + 100 < mouseY || a[0] - 100 >= mouseX || a[1] - 100 > mouseY) {
+        let dot = document.createElement('i');
+        let dot1 = document.createElement('i');
+        a[0] = mouseX;
+        a[1] = mouseY;
+        dot.style.position = 'absolute';
+        dot.style.width = '5px';
+        dot.style.height = '5px';
+        dot.style.color = getRandomColor();
+        dot.style.zIndex = '99999'
+
+        dot1.style.position = 'absolute';
+        dot1.style.width = '5px';
+        dot1.style.height = '5px';
+        dot1.style.color = getRandomColor();
+        dot1.style.zIndex = '99998'
+
+        dot1.style.left = mouseX + 7 + 'px';
+        dot1.style.top = mouseY + 'px';
+        dot1.classList.add('fa-solid', 'fa-star', 'fa-bounce', "fall");
+
+        dot.style.left = mouseX + 'px';
+        dot.style.top = mouseY + 'px';
+        dot.classList.add('fa-solid', 'fa-star', "fa-xs", "fall");
+
+
+        document.body.appendChild(dot);
+        setTimeout(() => {
+            dot.remove();
+        }, 2000);
+        document.body.appendChild(dot1);
+        setTimeout(() => {
+            dot1.remove();
+        }, 2000);
+    }
+};
+
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 const STAR_SIZE = 1;
 const STAR_MIN_SCALE = 0.2;
-
 const OVERFLOW_THRESHOLD = 150;
 const STAR_COUNT = (window.innerWidth + window.innerHeight) / 8;
 const canvas = document.querySelector('canvas');
@@ -175,8 +224,8 @@ document.addEventListener('mousemove', (e) => {
     if (isDragging) {
         const left = e.clientX - startX;
         const top = e.clientY - startY;
-        canvas.style.height="100%";
-        canvas.style.width="100%"
+        canvas.style.height = "100%";
+        canvas.style.width = "100%"
         offsetX = left;
         offsetY = top;
         if (left >= 0 && left + container.offsetWidth <= bodyWidth) {
