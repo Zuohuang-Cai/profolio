@@ -20,11 +20,11 @@ window.onmousemove = (event) => {
         dot1.style.zIndex = '99998'
 
         dot1.style.left = mouseX + 7 + 'px';
-        dot1.style.top = mouseY + 'px';
+        dot1.style.top = (mouseY +35)+ 'px';
         dot1.classList.add('fa-solid', 'fa-star', 'fa-bounce', "fall");
 
         dot.style.left = mouseX + 'px';
-        dot.style.top = mouseY + 'px';
+        dot.style.top = mouseY + 30+'px';
         dot.classList.add('fa-solid', 'fa-star', "fa-xs", "fall");
 
 
