@@ -3,83 +3,14 @@
     margin: 0;
 }
 
-body {
+.container {
     background-image: linear-gradient(-255deg, #231557 0%, #43107a 29%, #ff1361 100%);
     width: 100%;
     min-height: 100vh;
     height: 100%;
     display: flex;
     cursor: url("icons8-rocket-48.png"),auto;
-}
-
-canvas {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    pointer-events:fill;
-    left: 0;
-}
-
-.blog {
-    display: flex;
-    align-items: center;
-    position: relative;
-    height: 100px;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-radius: 50%;
-    border: 3px solid black;
-}
-
-.blog ::before {
-    z-index: 2;
-    content: "idk";
-    display: block;
-}
-
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-a{
-    text-decoration: none;
-}
-.container * {
-    margin: 3px;
-}
-
-.container {
-    display: flex;
-    max-width: 100px;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    pointer-events: auto;
-}
-
-.blog {
-    position: relative;
-    display:flex;
-    justify-content: center;
-    z-index: 2;
-    color: black;
-}
-.blog:hover{
-    cursor: url('icons8-search-50.png'),auto;
-}
-.blog:not(:first-child)::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    transform: translateY(-50%);
-    width: 11px;
-    height: 1px;
-    background-color: black; 
+    background-repeat: no-repeat;
 }
 
 @keyframes fall {

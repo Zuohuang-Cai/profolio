@@ -20,11 +20,11 @@ window.onmousemove = (event) => {
         dot1.style.zIndex = '99998'
 
         dot1.style.left = mouseX + 7 + 'px';
-        dot1.style.top = (mouseY +35)+ 'px';
+        dot1.style.top = (mouseY + 35) + 'px';
         dot1.classList.add('fa-solid', 'fa-star', 'fa-bounce', "fall");
 
         dot.style.left = mouseX + 'px';
-        dot.style.top = mouseY + 30+'px';
+        dot.style.top = mouseY + 30 + 'px';
         dot.classList.add('fa-solid', 'fa-star', "fa-xs", "fall");
 
 
@@ -50,9 +50,9 @@ function getRandomColor() {
 
 const STAR_SIZE = 1;
 const STAR_MIN_SCALE = 0.2;
-const OVERFLOW_THRESHOLD = 150;
+const OVERFLOW_THRESHOLD = 550;
 const STAR_COUNT = (window.innerWidth + window.innerHeight) / 8;
-const canvas = document.querySelector('canvas');
+const canvas = document.querySelector('#universe');
 const context = canvas.getContext('2d');
 let scale = 1;
 let width;
@@ -100,7 +100,7 @@ function recycleStar(star) {
             direction = velocity.y > 0 ? 't' : 'b';
         }
     }
-    star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+    star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE)*10;
     if (direction === 'z') {
         star.z = 0.1;
         star.x = Math.random() * width;
@@ -196,47 +196,3 @@ function onMouseLeave() {
     pointerX = null;
     pointerY = null;
 }
-
-
-
-
-let isDragging = false;
-let startX, startY;
-let currentX = 0;
-let currentY = 0;
-let currentZoom = 1;
-const zoomStep = 0.1;
-const maxMoveX = 100;
-const maxMoveY = 100;
-let offsetX = 0;
-let offsetY = 0;
-const bodyWidth = document.body.clientWidth;
-const bodyHeight = document.body.clientHeight;
-const container = document.querySelector('.container');
-
-container.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.clientX - container.offsetLeft;
-    startY = e.clientY - container.offsetTop;
-});
-
-document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-        const left = e.clientX - startX;
-        const top = e.clientY - startY;
-        canvas.style.height = "100%";
-        canvas.style.width = "100%"
-        offsetX = left;
-        offsetY = top;
-        if (left >= 0 && left + container.offsetWidth <= bodyWidth) {
-            container.style.left = `${left}px`;
-        }
-        if (top >= 0 && top + container.offsetHeight <= bodyHeight) {
-            container.style.top = `${top}px`;
-        }
-    }
-});
-
-document.addEventListener('mouseup', () => {
-    isDragging = false;
-});
