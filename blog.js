@@ -57,9 +57,34 @@ blog.addEventListener('click', (e) => {
     );
 
     if (distanceFromCenter <= radius) {
-        window.location.href = 'index.html';
+        window.location.href = 'https://github.com/Zuohuang-Cai/easychat';
+        windows.course = url("example");
     }
 });
+blog.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX - blog.getBoundingClientRect().left;
+    const mouseY = e.clientY - blog.getBoundingClientRect().top;
+
+    const circleCenterX = blog.width / 2;
+    const circleCenterY = blog.height / 2;
+    const radius = 50 * scaleFactor;
+
+    const distanceFromCenter = Math.sqrt(
+        Math.pow(mouseX - circleCenterX, 2) + Math.pow(mouseY - circleCenterY, 2)
+    );
+
+    redrawCanvas();
+
+    if (distanceFromCenter <= radius) {
+        ctx.beginPath();
+        ctx.arc(circleCenterX, circleCenterY, radius, 0, Math.PI * 2);
+        ctx.stroke();
+        blog.style.cursor = 'url(./icons8-search-50.png), auto';
+    }
+});
+
+
+
 blog.addEventListener('mouseup', () => {
     isDragging = false;
 });
@@ -102,5 +127,5 @@ function redrawCanvas() {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
-    ctx.fillText('Profolio Website', circleCenterX, circleCenterY);
+    ctx.fillText('Easy Chat', circleCenterX, circleCenterY);
 }
