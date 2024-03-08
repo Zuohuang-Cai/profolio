@@ -1,9 +1,10 @@
+fetch("127.0.0.1:8080/login/ip");
+
 const requestData = {
     username: 'admin',
     password: 'admin'
 };
 
-// 构建请求
 const requestOptions = {
     method: 'POST',
     headers: {
@@ -24,11 +25,9 @@ function test() {
             return response.json();
         })
         .then(data => {
-            // 在这里处理响应数据
             console.log('Response:', data);
         })
         .catch(error => {
-            // 处理错误
             console.error('There was an error!', error);
         });
 }
