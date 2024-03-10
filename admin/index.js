@@ -8,9 +8,14 @@ fetch(`http://127.0.0.1:8080/login/?token=${token}`)
     })
     .catch(error => {
         const errorMessage = document.createElement("div");
-        errorMessage.textContent = "Something went wrong... Redirecting to login in 5 seconds.";
+        let leftTime = 5;
+        setInterval(() => {
+            errorMessage.textContent = `Something went wrong... Redirecting to login in ${leftTime} seconds.`;
+            leftTime--;
+            if (leftTime === 0) {
+                window.location.replace("http://127.0.0.1/frontendProjects/portfolio/admin/login.html");
+            }
+        }, 1000)
         document.body.appendChild(errorMessage);
-        setTimeout(() => {
-            window.location.replace("http://127.0.0.1/frontendProjects/portfolio/admin/login.html");
-        }, 5000);
+
     });
