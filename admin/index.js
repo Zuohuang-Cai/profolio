@@ -13,7 +13,7 @@ fetch(`http://127.0.0.1:8080/login/?token=${token}`)
             errorMessage.textContent = `Something went wrong... Redirecting to login in ${leftTime} seconds.`;
             leftTime--;
             if (leftTime === 0) {
-                window.location.replace("http://127.0.0.1/frontendProjects/portfolio/admin/login.html");
+                window.location.replace("login.html");
             }
         }, 1000)
         document.body.appendChild(errorMessage);

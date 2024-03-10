@@ -23,7 +23,7 @@ function login() {
         })
         .then(data => {
             localStorage.setItem("token", data["data"])
-            window.location.replace("http://127.0.0.1/frontendProjects/portfolio/admin/index.html")
+            window.location.replace("index.html")
         })
         .catch(error => {
             console.error('There was an error!', error);
