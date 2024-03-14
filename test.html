@@ -20,9 +20,15 @@
     <input type="text" id="Tag" name="Tag" value="idk2"><br><br>
 
     <label for="Foto">Foto:</label>
-    <input type="file" id="Foto" name="Foto"><br><br>
+    <input type="file" id="Foto" name="Fotofile"><br><br>
 
     <input type="submit" value="Submit">
 </form>
 </body>
+<script>
+    fetch("http://127.0.0.1:8080/project/foto?id=14")
+    .then((data)=>{
+        console.log(data.toString());
+    });
+</script>
 </html>
