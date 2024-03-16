@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Form</title>
+    <title>Send POST Request</title>
 </head>
 <body>
-<form action="http://127.0.0.1:8080/project/" method="POST" enctype="multipart/form-data">
+
+<form id="myForm" enctype="multipart/form-data">
     <label for="Title">Title:</label>
     <input type="text" id="Title" name="Title" value="idk2"><br><br>
 
@@ -22,13 +21,34 @@
     <label for="Foto">Foto:</label>
     <input type="file" id="Foto" name="Fotofile"><br><br>
 
-    <input type="submit" value="Submit">
+    <input type="button" value="Submit" onclick="submitForm()">
 </form>
-</body>
+
 <script>
-    fetch("http://127.0.0.1:8080/project/foto?id=14")
-    .then((data)=>{
-        console.log(data.toString());
-    });
+    function submitForm() {
+        var form = document.getElementById('myForm');
+        var formData = new FormData(form);
+
+        // Get token from input or wherever you have it
+        var token = 'eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiYWRtaW4iLCJpZCI6MSwiZXhwIjoxNzEwNDQ5NzI0fQ.MrIRyTE3X4HIqLpgn1-zTEMynqwG9SULA0k2YLJVGtw'
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:8080/project/', true);
+
+        // Set token as a header
+        xhr.setRequestHeader('token', token);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    console.log('Request successful');
+                } else {
+                    console.error('Request failed');
+                }
+            }
+        };
+        xhr.send(formData);
+    }
 </script>
+
+</body>
 </html>
